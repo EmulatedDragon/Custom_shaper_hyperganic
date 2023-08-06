@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- This is Source Code to be used on Hyperganic Core. -->
+<!-- The Hyperganic Platform - Source Code License applies to the usage of this code. -->
+<!-- https://gitlab.hyperganic.com/hyperganic-platformcommunity/license -->
+<Project Sdk="Microsoft.NET.Sdk">
+	<!-- Application -->
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<AssemblyName>Main</AssemblyName>
+	</PropertyGroup>
+	
+	<!-- Build configurations -->
+	<!-- Debug build configuration -->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<OutputPath>App/bin</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<DefineConstants Condition="$(OS) == 'Windows_NT'">_WINDOWS</DefineConstants>
+		<CustomCommands>
+		  <CustomCommands>
+		    <Command>
+		      <type>Build</type>
+		      <command>msbuild CustomShapers.sln</command>
+		    </Command>
+		    <Command>
+		      <type>Build</type>
+		      <command>/Applications/HyperganicCore.app/Contents/MacOS/HyperganicCore "${SolutionDir}/App"</command>
+		    </Command>
+		  </CustomCommands>
+		</CustomCommands>
+	</PropertyGroup>
+	<!-- Release build configuration -->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<OutputPath>App/bin</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<DefineConstants Condition="$(OS) == 'Windows_NT'">_WINDOWS</DefineConstants>
+	</PropertyGroup>
+	
+	<!-- Resources -->
+	<!-- C# Resources -->
+	<ItemGroup>
+		<Compile Condition="$(OS) != 'Windows_NT'" Include="/Applications/HyperganicCore.app/Contents/Resources/CSharp/**/*.cs">
+			<Link>Resources\CSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		</Compile>
+        <Compile name="CSharpResource_WINDOWS" Condition="$(OS) =='Windows_NT'" Include="C:\Program Files\HyperganicCore\Resources\CSharp\**\*.cs">
+			<Link>Resources\CSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		</Compile>
+	</ItemGroup>
+	<!-- XML Resources -->
+	<ItemGroup>
+		<Content Condition="$(OS) != 'Windows_NT'" Include="/Applications/HyperganicCore.app/Contents/Resources/*.xml">
+			<Link>Resources\XML\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		</Content>
+        <Content name="XMLResource_WINDOWS" Condition="$(OS) =='Windows_NT'" Include="C:\Program Files\HyperganicCore\Resources\*.xml">
+			<Link>Resources\XML\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		</Content>
+	</ItemGroup>
+
+	<!-- App source code -->
+	<ItemGroup>
+		<None Include="XML\**" />
+	</ItemGroup>
+	
+	<!-- Log files (Windows) -->
+	<ItemGroup>
+		<None Condition="$(OS) == 'Windows_NT'" Include="$(LOCALAPPDATA)\HyperganicCore\*.log" Link="Logs/%(FileName).log" />
+	</ItemGroup>
+	<!-- Log files (macOS) -->
+	<ItemGroup>
+		<None Condition="$(OS) != 'Windows_NT'" Include="$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))\Library\Application Support\HyperganicCore\*.log" Link="Logs/%(FileName).log" />
+	</ItemGroup>
+	
+	
+	<!-- Exclude DoOpenModel -->
+	<ItemGroup>
+		<Compile Condition="$(OS) =='Windows_NT'" Remove="C:\Program Files\HyperganicCore\Resources\CSharp\Utilities\DoOpenModel.cs" />
+		<Compile Condition="$(OS) !='Windows_NT'" Remove="/Applications/HyperganicCore.app/Contents/Resources/CSharp/Utilities/DoOpenModel.cs" />
+	</ItemGroup>
+
+</Project>
