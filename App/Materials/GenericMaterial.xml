@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is Source Code to be used on Hyperganic Core. --> 
+<!-- The Hyperganic Platform - Source Code License applies to the usage of this code. --> 
+<!-- https://gitlab.hyperganic.com/hyperganic-platformcommunity/license --> 
+
+<!-- nameless groups won't appear as a separate label in the list -->
+<!-- Material and MaterialGroup tags are interchangeable; what's important is whether there are child elements or not -->
+<!-- the contents of name="" appears in the hierarchy, while fullName="" appears in the combo box once selected -->
+<!-- GUIDs are important only for inheritance / overriding -->
+<MaterialGroup
+  guid="{5063C783-81FF-4694-B6ED-BF402131F0E7}"
+  name="Generic Materials"
+  manufacturer="Hyperganic"
+  thickening="0.25,0.5,0.75"
+  metallic="0.1"
+  roughness="0.6"
+  transparency="0"
+  color="B300"
+  >
+</MaterialGroup>

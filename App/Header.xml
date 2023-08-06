@@ -1,0 +1,9 @@
+<!-- This is Source Code to be used on Hyperganic Core. --> 
+<!-- The Hyperganic Platform - Source Code License applies to the usage of this code. --> 
+<!-- https://gitlab.hyperganic.com/hyperganic-platformcommunity/license --> 
+
+<!-- Header -->
+<Grid height="48" rows="1" stretchColumn="-2" style="ForegroundPanel,TopLeft,FullSize">
+	<ButtonBar icons="IconPlusMedium" name="ProjectTabBar" onTabClose="Application.ProjectClose()" left="16" selectedItem="0" style="TextTabBar,FullSize" variable="$Application.CurrentProject"/>
+	<Panel background="TopRightLogo" centerv="50%" right="12"/>
+</Grid>

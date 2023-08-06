@@ -1,0 +1,61 @@
+<ProjectDisplay name="ProjectDisplay" bottom="0" left="0" grid="Grey1" outOfBoundsGrid="Grey1" background="Grey6" selected="MATERIAL" deselected="MATERIAL" outOfBoundsTint="TOMATO" allowDragObjects="false" allowMultipleProjects="false" dotGrid="true" drawWalls="true" right="0,312:312">
+	<Environment diffuse="IBL/gradient_softSquare_D.dds" exposure="0.5" name="Gradient Soft Square" specular="IBL/gradient_softSquare_S.dds"/>
+	<Environment diffuse="IBL/TopWindowD.dds" exposure="0" name="Top Window" specular="IBL/TopWindowS.dds"/>
+	<Panel name="SplittingModeBorder" style="EditModeBorder,FullSize" visible="false"/>
+	<!-- Global Commands-->
+	<Command name="OpenModelFiles" script="CSharp.OpenModelFiles($1)"/>
+	<!-- RepairModals Commands-->
+	<Command name="OnMeshErrors" script="CSharp.OnMeshErrors($1, $2)"/>
+	<Command name="OnMeshRejected" script="CSharp.OnMeshRejected($1)"/>
+	<Command name="OnVoxelizationError" script="CSharp.OnVoxelizationError($1)"/>
+	<!-- Printing Info Commands -->
+	<Command name="ShowPrintingInformation" script="PrintingInformation.Show()"/>
+	<Command name="HidePrintingInformation" script="PrintingInformation.Hide()"/>
+	<!-- Printing information -->
+	<Grid cellSpacing="8" name="PrintingInformation" rows="1" width="30" right="64" bottom="16" height="40" visible="false">
+		<Grid cellSpacing="4" rows="1">
+			<Panel style="PrintInfoDimension"/>
+			<TextBox style="PrintInfo" variable="Project.PrintingInformation.BBox"/>
+		</Grid>
+	</Grid>
+
+	<!-- Splitting Plane Slider and Button -->
+	<Slider width="200" centerh="50%" bottom="16" default="0.5" height="57" margins="0,3,0,0" max="1" min="0.01" name="SplittingPlaneSlider" precision="2" style="AdjustableSlider" onChange="CSharp.UpdateSplittingPlane()" onStartChanging="SetVariable(ProjectDisplay.ShowSplittingPlane,true)" onEndChanging="SetVariable(ProjectDisplay.ShowSplittingPlane,false)" variable="ProjectDisplay.SplittingPlanePosition" visible="false"/>
+	<Button name="SplittingPlaneButton" right="16" bottom="16" onClick="CSharp.ToggleSplittingPlane(); CSharp.SplittingPlaneToggle();" style="SplittingPlane"/>
+	
+	<!--Powered by Hyperganic-->
+	<!-- Key parameter is the width, the 550 sets the boundary for show it or not. The higher the space which the printing information takes, the higher that this number needs to be. -->
+	<Button style="HyPoweredButton" name="HyPoweredLogo" onClick="Application.OpenURL(https://www.hyperganic.com)" width="0,550:100%"/>
+
+	<!-- Background Task Spinner -->
+	<ProgressBar bottom="0" height="6" left="0" name="BackgroundTaskSpinner" style="ProgressSpinner" visible="false" width="100%">
+		<Command name="BeginBackgroundTask" script=" $Parent.PoweredBy.Hide(0.3); $Parent.BackgroundTaskText.SetText($1); $Parent.BackgroundTaskText.Show(0.3); SupportSettings.DisableEditing(); Show(0.3);"/>
+		<Command name="SetBackgroundTaskText" script="$Parent.BackgroundTaskText.SetText($1)"/>
+		<Command name="EndBackgroundTask" script=" $Parent.PoweredBy.Show(0.3); $Parent.BackgroundTaskText.Hide(0.3); Hide(0.3); "/>
+	</ProgressBar>
+	<Label bottom="16" centerh="50%" name="BackgroundTaskText" style="BackgroundTask" text="Working..." visible="false"/>
+	<TextBox name="Pill" position="OffScreen" style="Pill">
+		<Position centerh="50%" height="24" name="OnScreen" top="32" width="125"/>
+		<Position bottom="100%" centerh="50%" height="24" name="OffScreen" width="125"/>
+	</TextBox>
+	<!-- Import Button -->
+	<!--<Button bottom="16" left="16" name="ImportFile" onClick="CSharp.OpenModelFile();" style="FileUploadCircularButton"/>-->
+	<!-- Progress Dialog -->
+	<Panel background="ModalGrayOut" name="ProgressDialog" style="TopLeft,FullSize" visible="false">
+		<Command name="BeginProgress" script=" Show(0.3); Panel.MoveToPosition(Bottom); Panel.MoveToPosition(Center, 0.3, EaseOutCubic); Panel.Show(0.3); Panel.Text.SetText($1); Panel.Text.Show(0.3); Panel.Percent.Show(0.3); Panel.Percent.SetText($3); Panel.ProgressBar.SetProgress($2); Panel.ProgressBar.Show(0.3); $Root.Inspector.$Parent.Disable(); $Root.ProjectTabBar.Disable();"/>
+		<Command name="SetProgress" script=" Panel.ProgressBar.SetProgress($1); Panel.Percent.SetText($2);"/>
+		<Command name="SetProgressText" script="Panel.Text.SetText($1);"/>
+		<Command name="EndProgress" script=" Hide(0.3); Panel.MoveToPosition(Top, 0.3, EaseInCubic); Panel.Hide(0.3); Panel.Text.Hide(0.3); Panel.Percent.SetText(100%); Panel.Percent.Hide(0.3); Panel.ProgressBar.SetProgress(1); Panel.ProgressBar.Hide(0.3); $Root.Inspector.$Parent.Enable(); $Root.ProjectTabBar.Enable();"/>
+		<Panel background="PanelBackground" name="Panel" position="Bottom" visible="false">
+			<Position centerh="50%" centerv="50%" height="76" name="Center" width="384"/>
+			<Position centerh="50%" centerv="75%" height="76" name="Bottom" width="280"/>
+			<Position centerh="50%" centerv="25%" height="76" name="Top" width="280"/>
+			<Panel bottom="0" left="0" top="0" width="280">
+				<Label left="24" name="Text" style="Label" top="24" visible="false"/>
+				<Label alignh="right" name="Percent" right="24" style="Label" top="24" visible="false"/>
+				<ProgressBar bottom="24" centerh="50%" height="4" name="ProgressBar" style="ProgressBar" visible="false" width="-48"/>
+			</Panel>
+			<Button left="280" onClick="Application.AbortCurrentAction();" style="ActionButton" text="Cancel" top="24" width="80"/>
+		</Panel>
+	</Panel>
+</ProjectDisplay>

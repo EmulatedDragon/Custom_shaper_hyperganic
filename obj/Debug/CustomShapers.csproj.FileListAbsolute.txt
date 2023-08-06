@@ -1,0 +1,10 @@
+C:\Users\preet\Desktop\HYPERGANIC\StarterFiles\CustomShapers\App\bin\Main.deps.json
+C:\Users\preet\Desktop\HYPERGANIC\StarterFiles\CustomShapers\App\bin\Main.dll
+C:\Users\preet\Desktop\HYPERGANIC\StarterFiles\CustomShapers\App\bin\Main.pdb
+C:\Users\preet\Desktop\HYPERGANIC\StarterFiles\CustomShapers\obj\Debug\CustomShapers.csproj.AssemblyReference.cache
+C:\Users\preet\Desktop\HYPERGANIC\StarterFiles\CustomShapers\obj\Debug\CustomShapers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\preet\Desktop\HYPERGANIC\StarterFiles\CustomShapers\obj\Debug\CustomShapers.AssemblyInfoInputs.cache
+C:\Users\preet\Desktop\HYPERGANIC\StarterFiles\CustomShapers\obj\Debug\CustomShapers.AssemblyInfo.cs
+C:\Users\preet\Desktop\HYPERGANIC\StarterFiles\CustomShapers\obj\Debug\CustomShapers.csproj.CoreCompileInputs.cache
+C:\Users\preet\Desktop\HYPERGANIC\StarterFiles\CustomShapers\obj\Debug\Main.dll
+C:\Users\preet\Desktop\HYPERGANIC\StarterFiles\CustomShapers\obj\Debug\Main.pdb

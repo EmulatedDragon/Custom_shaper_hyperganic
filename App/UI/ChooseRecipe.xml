@@ -1,0 +1,39 @@
+<!-- This is Source Code to be used on Hyperganic Core. --> 
+<!-- The Hyperganic Platform - Source Code License applies to the usage of this code. --> 
+<!-- https://gitlab.hyperganic.com/hyperganic-platformcommunity/license -->
+
+<!DOCTYPE UI [
+	<!ENTITY recipe1 "Sphere Shaper">
+	<!ENTITY recipe2 "Cuboid Shaper">
+	<!ENTITY recipe3 "Pyramid Shaper">
+	<!ENTITY recipe4 "Cylinder Hollow Cartesian Shaper">
+	<!ENTITY recipe5 "Cylinder Hollow Polar Shaper">
+	<!ENTITY recipe6 "Cone Shaper">
+	<!ENTITY recipe7 "Custom Spring Shaper">
+	<!ENTITY recipe8 "Epicycloid Shaper">
+	<!ENTITY recipe9 "Super Formula 2D Shaper">
+	<!ENTITY recipe10 "Super Formula 3D Shaper">
+	<!ENTITY recipe11 "Smooth Interpolation Shaper">
+	<!ENTITY recipe12 "Bezier Curve Shaper">
+	<!ENTITY recipe13 "Rotation Explorer Shaper">
+	<!ENTITY recipe14 "Polygonal Prism Shaper">
+	<!ENTITY recipe15 "My custom Shaper">
+]>
+
+<UI>
+	<Grid name="ChooseRecipe" background="White" cellSpacing="0,16" columns="1" padding="16,16,16,16" width="312" height="60">
+		<Grid name="RecipeCombobox" columns="1" height="60" padding="0,25,0,0" width="100%">
+			<ComboBox style="Caret" height="40" width="100%"
+				label="Choose custom Shaper" labelFont="sh5" labelColor="ComboBoxText" labelPosition="top" labelOffset="5"
+				name=""
+				variable="Project.RecipeNumber"
+				onChange="CSharp.SetUpRecipe();"
+				text="0"
+				items="&recipe1;,&recipe2;,&recipe3;,&recipe4;,&recipe5;,&recipe6;,&recipe7;,&recipe8;,&recipe9;,&recipe10;,&recipe11;,&recipe12;,&recipe13;,&recipe14;,&recipe15;"
+				values="&recipe1;,&recipe2;,&recipe3;,&recipe4;,&recipe5;,&recipe6;,&recipe7;,&recipe8;,&recipe9;,&recipe10;,&recipe11;,&recipe12;,&recipe13;,&recipe14;,&recipe15;"
+		/>
+		</Grid>
+	</Grid>
+</UI>
+
+

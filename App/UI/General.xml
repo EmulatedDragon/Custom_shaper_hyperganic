@@ -1,0 +1,403 @@
+<!-- This is Source Code to be used on Hyperganic Core. -->
+<!-- The Hyperganic Platform - Source Code License applies to the usage of this code. -->
+<!-- https://gitlab.hyperganic.com/hyperganic-platformcommunity/license -->
+
+<Panel name="{RecipeName}" visible="false" style="TopLeft" padding="0,0,0,0" position="Expanded" >
+	<Position height="56" name="Collapsed" width="100%"/>
+	<Position height="{expandedHeight}" name="Expanded" width="100%"/>
+
+	<Grid name="InputParametersGrid" background="White" cellSpacing="0,16" columns="1" padding="16,16,16,16" width="312">
+
+		<TextBox name="recipeHeader" style="SubHeader" text="{RecipeName}" />
+
+		<!--ComboBox-->
+		<Grid name="strRotationAxis" visible="false" columns="1" height="60" padding="0,20,0,0" width="100%">
+			<ComboBox label="Axis" labelFont="b4" labelColor="ComboBoxText" labelOffset="5" style="Caret" height="40" width="100%"
+				variable="Project.strRotationAxis{RecipeName}"
+				onChange="CSharp.ReadRotationAxisFromUI();"
+				text="X"
+				items=" X, Y, Z, Custom"
+				values="X,Y,Z,Custom"
+		/>
+		</Grid>
+
+		<!--Supershapes-->
+		<Grid name ="Supershape2D" visible="false" columns="4" cellSpacing="8,0" stretchColumn="1" height="60" width="100%" padding="0,20,0,0">
+			<EditBox name="fm"  width="100%" enabled="true" margins="" style="BasicField"
+					emptyText="10"
+					label="m"
+					precision="1"
+					text="10"
+					unit=""
+					variable="Project.fm{RecipeName}"/>
+			<EditBox name="fn1" enabled="true" margins="" style="BasicField" width="100%"
+					emptyText="3"
+					label="n1"
+					precision="1"
+					text="3"
+					unit=""
+					variable="Project.fn1{RecipeName}"/>
+			<EditBox name="fn2"
+					emptyText="3" enabled="true" margins="" style="BasicField"  width="100%"
+					label="n2"
+					precision="1"
+					text="3"
+					unit=""
+					variable="Project.fn2{RecipeName}"/>
+			<EditBox name="fn3" enabled="true" margins="" style="BasicField" width="100%"
+					emptyText="5"
+					label="n3"
+					precision="1"
+					text="5"
+					unit=""
+					variable="Project.fn3{RecipeName}"/>
+		</Grid>
+		<Grid name ="Supershape3D" visible="false" rows="2" columns="4" cellSpacing="8,32" stretchColumn="1" height="120" width="100%" padding="0,20,0,0">
+			<EditBox name="fm1"  width="100%" enabled="true" margins="" style="BasicField"
+					emptyText="8"
+					label="m1"
+					precision="1"
+					text="8"
+					unit=""
+					variable="Project.fm1{RecipeName}"/>
+			<EditBox name="fn11" enabled="true" margins="" style="BasicField" width="100%"
+					emptyText="60"
+					label="n11"
+					precision="1"
+					text="60"
+					unit=""
+					variable="Project.fN11{RecipeName}"/>
+			<EditBox name="fn21"
+					emptyText="100" enabled="true" margins="" style="BasicField"  width="100%"
+					label="n21"
+					precision="1"
+					text="100"
+					unit=""
+					variable="Project.fn21{RecipeName}"/>
+			<EditBox name="fn31" enabled="true" margins="" style="BasicField" width="100%"
+					emptyText="30"
+					label="n31"
+					precision="1"
+					text="30"
+					unit=""
+					variable="Project.fn31{RecipeName}"/>
+			<EditBox name="fm2"  width="100%" enabled="true" margins="" style="BasicField"
+					emptyText="2"
+					label="m2"
+					precision="1"
+					text="2"
+					unit=""
+					variable="Project.fm2{RecipeName}"/>
+			<EditBox name="fn21" enabled="true" margins="" style="BasicField" width="100%"
+					emptyText="15"
+					label="n21"
+					precision="1"
+					text="15"
+					unit=""
+					variable="Project.fn12{RecipeName}"/>
+			<EditBox name="fn22"
+					emptyText="5" enabled="true" margins="" style="BasicField"  width="100%"
+					label="n22"
+					precision="1"
+					text="5"
+					unit=""
+					variable="Project.fn22{RecipeName}"/>
+			<EditBox name="fn32" enabled="true" margins="" style="BasicField" width="100%"
+					emptyText="30"
+					label="n32"
+					precision="1"
+					text="30"
+					unit=""
+					variable="Project.fn32{RecipeName}"/>
+		</Grid>
+
+		<!--Sliders-->
+		<Grid name="fCircleRadius" visible="false" columns="1" height="60" width="100%">
+			<Slider default="5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="1"
+					precision="0"
+					text="Radius"
+					unit="mm"
+					variable ="Project.fCircleRadius{RecipeName}"/>
+		</Grid>
+		<Grid name="fHeight" visible="false" columns="1" height="60" width="100%">
+			<Slider default="5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="2"
+					precision="0"
+					text="Height"
+					unit="mm"
+					variable ="Project.fHeight{RecipeName}"/>
+		</Grid>
+		<Grid name="fThickness" visible="false" columns="1" height="60" width="100%">
+			<Slider default="1" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="2"
+					min="0.2"
+					precision="2"
+					text="Thickness"
+					unit=""
+					variable ="Project.fThickness{RecipeName}"/>
+		</Grid>
+		<Grid name="fMetaballSize" visible="false" columns="1" height="60" width="100%">
+			<Slider default="1" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="5"
+					min="0.1"
+					precision="2"
+					text="Metaball Size"
+					unit=""
+					variable ="Project.fMetaballSize{RecipeName}"/>
+		</Grid>
+		<Grid name="fAngularResolution" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0.05" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="0.5"
+					min="0.01"
+					precision="2"
+					text="Angular Resolution"
+					unit=""
+					variable ="Project.fAngularResolution{RecipeName}"/>
+		</Grid>
+		<Grid name="fAngularIncrement" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0.5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="1"
+					min="0.01"
+					precision="2"
+					text="Angular Increment"
+					unit=""
+					variable ="Project.fAngularIncrement{RecipeName}"/>
+		</Grid>
+		<Grid name="iCoils" visible="false" columns="1" height="60" width="100%">
+			<Slider default="2" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="5"
+					min="1"
+					precision="0"
+					text="Number of Coils"
+					unit=""
+					variable ="Project.iCoils{RecipeName}"/>
+		</Grid>
+		<Grid name="fOuterRadius" visible="false" columns="1" height="60" width="100%">
+			<Slider default="2.5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="10"
+					min="0.5"
+					precision="1"
+					text="Outer Radius"
+					unit=""
+					variable ="Project.fOuterRadius{RecipeName}"/>
+		</Grid>
+		<Grid name="fRatio" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0.75" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="1"
+					min="0"
+					precision="2"
+					text="Ratio"
+					unit=""
+					variable ="Project.fRatio{RecipeName}"/>
+		</Grid>
+		<Grid name="iIterations" visible="false" columns="1" height="60" width="100%">
+			<Slider default="5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="10"
+					min="1"
+					precision="0"
+					text="Number of Iterations"
+					unit=""
+					variable ="Project.iIterations{RecipeName}"/>
+		</Grid>
+		<Grid name="fLength" visible="false" columns="1" height="60" width="100%">
+			<Slider default="5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="2"
+					precision="0"
+					text="Length"
+					unit="mm"
+					variable ="Project.fLength{RecipeName}"/>
+		</Grid>
+		<Grid name="fWidth" visible="false" columns="1" height="60" width="100%">
+			<Slider default="5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="2"
+					precision="0"
+					text="Width"
+					unit="mm"
+					variable ="Project.fWidth{RecipeName}"/>
+		</Grid>
+		<Grid name="fDepth" visible="false" columns="1" height="60" width="100%">
+			<Slider default="5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="2"
+					precision="0"
+					text="Depth"
+					unit="mm"
+					variable ="Project.fDepth{RecipeName}"/>
+		</Grid>
+		<Grid name="iNumberOfSides" visible="false" columns="1" height="60" width="100%">
+			<Slider default="6" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="100"
+					min="3"
+					precision="0"
+					text="No of Polygon Sides"
+					unit=""
+					variable ="Project.iNumberOfSides{RecipeName}"/>
+		</Grid>
+		<Grid name="fDistanceToCenter" visible="false" columns="1" height="60" width="100%">
+			<Slider default="5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="0"
+					precision="1"
+					text="Distance to Center"
+					unit=""
+					variable ="Project.fDistanceToCenter{RecipeName}"/>
+		</Grid>
+		<Grid name="fXStart" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="-20"
+					precision="0"
+					text="X Start"
+					unit=""
+					variable ="Project.fXStart{RecipeName}"/>
+		</Grid>
+		<Grid name="fYStart" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="-20"
+					precision="0"
+					text="Y Start"
+					unit=""
+					variable ="Project.fYStart{RecipeName}"/>
+		</Grid>
+		<Grid name="fZStart" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="-20"
+					precision="0"
+					text="Z Start"
+					unit=""
+					variable ="Project.fZStart{RecipeName}"/>
+		</Grid>
+		<Grid name="fXCenter" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="-20"
+					precision="0"
+					text="X Center"
+					unit=""
+					variable ="Project.fXCenter{RecipeName}"/>
+		</Grid>
+		<Grid name="fYCenter" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="-20"
+					precision="0"
+					text="Y Center"
+					unit=""
+					variable ="Project.fYCenter{RecipeName}"/>
+		</Grid>
+		<Grid name="fZCenter" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="-20"
+					precision="0"
+					text="Z Center"
+					unit=""
+					variable ="Project.fZCenter{RecipeName}"/>
+		</Grid>
+		<Grid name="fResolution" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0.5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="1"
+					min="0.01"
+					precision="2"
+					text="Resolution"
+					unit=""
+					variable ="Project.fResolution{RecipeName}"/>
+		</Grid>
+		<Grid name="iAngle" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="360"
+					min="0"
+					precision="0"
+					text="Angle"
+					unit=""
+					variable ="Project.iAngle{RecipeName}"/>
+		</Grid>
+		<Grid name="fX" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0.5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="1"
+					min="0"
+					precision="1"
+					text="X Axis Value"
+					unit=""
+					variable ="Project.fX{RecipeName}"/>
+		</Grid>
+		<Grid name="fY" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0.5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="1"
+					min="0"
+					precision="1"
+					text="Y Axis Value"
+					unit=""
+					variable ="Project.fY{RecipeName}"/>
+		</Grid>
+		<Grid name="fZ" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0.5" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="1"
+					min="0"
+					precision="1"
+					text="Z Axis Value"
+					unit=""
+					variable ="Project.fZ{RecipeName}"/>
+		</Grid>
+		<Grid name="fXPos" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="0"
+					precision="0"
+					text="X Position"
+					unit=""
+					variable ="Project.fXPos{RecipeName}"/>
+		</Grid>
+		<Grid name="fYPos" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="0"
+					precision="0"
+					text="Y Position"
+					unit=""
+					variable ="Project.fYPos{RecipeName}"/>
+		</Grid>
+		<Grid name="fZPos" visible="false" columns="1" height="60" width="100%">
+			<Slider default="0" enabled="true" height="57" margins="0,3,0,0" width="100%" style="AdjustableSlider"
+					max="20"
+					min="0"
+					precision="0"
+					text="Z Position"
+					unit=""
+					variable ="Project.fZPos{RecipeName}"/>
+		</Grid>
+		<Grid name="vecBez1" visible="false" columns="3" cellSpacing="8,0" stretchColumn="1" height="60" width="100%">
+			<Slider name="fX1" visible="false"  default="0" height="57" margins="0,3,0,0" max="10" min="-10" precision="0" style="AdjustableSlider" text="X1 :" unit="               " width="100%" variable ="Project.vecBez1.fX1{RecipeName}"/>
+			<Slider name="fY1" visible="false"  default="10" height="57" margins="0,3,0,0" max="10" min="-10" precision="0" style="AdjustableSlider" text="Y1 :" unit="               " width="100%" variable ="Project.vecBez1.fY1{RecipeName}"/>
+			<Slider name="fZ1" visible="false"  default="0" height="57" margins="0,3,0,0" max="10" min="-10" precision="0" style="AdjustableSlider" text="Z1 :" unit="               " width="100%" variable ="Project.vecBez1.fZ1{RecipeName}"/>
+		</Grid>
+		<Grid name="vecBez2" visible="false" columns="3" cellSpacing="8,0" stretchColumn="1" height="60" width="100%">
+			<Slider name="fX2" visible="false"  default="5" height="57" margins="0,3,0,0" max="10" min="-10" precision="0" style="AdjustableSlider" text="X2 :" unit="               " width="100%" variable ="Project.vecBez2.fX2{RecipeName}"/>
+			<Slider name="fY2" visible="false"  default="2" height="57" margins="0,3,0,0" max="10" min="-10" precision="0" style="AdjustableSlider" text="Y2 :" unit="               " width="100%" variable ="Project.vecBez2.fY2{RecipeName}"/>
+			<Slider name="fZ2" visible="false"  default="8" height="57" margins="0,3,0,0" max="10" min="-10" precision="0" style="AdjustableSlider" text="Z2 :" unit="               " width="100%" variable ="Project.vecBez2.fZ2{RecipeName}"/>
+		</Grid>
+		<Grid name="vecBez3" visible="false" columns="3" cellSpacing="8,0" stretchColumn="1" height="60" width="100%">
+			<Slider name="fX3" visible="false"  default="7" height="57" margins="0,3,0,0" max="10" min="-10" precision="0" style="AdjustableSlider" text="X3 :" unit="               " width="100%" variable ="Project.vecBez3.fX3{RecipeName}"/>
+			<Slider name="fY3" visible="false"  default="9" height="57" margins="0,3,0,0" max="10" min="-10" precision="0" style="AdjustableSlider" text="Y3 :" unit="               " width="100%" variable ="Project.vecBez3.fY3{RecipeName}"/>
+			<Slider name="fZ3" visible="false"  default="0" height="57" margins="0,3,0,0" max="10" min="-10" precision="0" style="AdjustableSlider" text="Z3 :" unit="               " width="100%" variable ="Project.vecBez3.fZ3{RecipeName}"/>
+		</Grid>
+
+		<!--Toggle-->
+		<Grid columns="2" visible ="true" name="animation" stretchColumn="1" cellSpacing="8,0" height="40" width="100%">
+			<TextBox text="Animation" alignh="left" alignv="center" height="40" style="B3FontStyle" width="100%"/>
+			<Toggle enabled="true" style="BasicSwitch"
+					on="false"
+					onTurnOff="CSharp.GetAnimateStatus(); CSharp.DisableAnimationMode();"
+					onTurnOn="CSharp.GetAnimateStatus(); CSharp.EnableAnimationMode();"
+					variable="Project.bAnimation"/>
+		</Grid>
+	</Grid>
+</Panel>
+

@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "CustomShapers": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\HyperganicCore\\HyperganicCore.exe",
+      "commandLineArgs": "\"$(SolutionDir)App\""
+    }
+  }
+}

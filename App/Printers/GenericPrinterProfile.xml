@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is Source Code to be used on Hyperganic Core. --> 
+<!-- The Hyperganic Platform - Source Code License applies to the usage of this code. --> 
+<!-- https://gitlab.hyperganic.com/hyperganic-platformcommunity/license --> 
+
+
+<PrinterFamily
+  manufacturer="Hyperganic"
+  voxelsPerUnit="7"
+  autoLayoutZRotation="1"
+  autoLayoutConcave="1"
+  alignmentFast="stability"
+  alignmentPrecise="stability"
+  postRecipe=""
+  importRecipe=""
+  openMeshPolicy="keep"
+  nonManifoldMeshPolicy="keep"
+  >
+
+  <Printer
+    model="Hy"
+    guid="{C449A299-4FB9-4E6D-AF59-7798EA498C4A}"
+    >
+    <Include file="../Materials/GenericMaterial.xml" />
+  </Printer>
+
+</PrinterFamily>

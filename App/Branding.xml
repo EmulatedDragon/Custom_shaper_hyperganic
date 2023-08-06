@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is Source Code to be used on Hyperganic Core. --> 
+<!-- The Hyperganic Platform - Source Code License applies to the usage of this code. --> 
+<!-- https://gitlab.hyperganic.com/hyperganic-platformcommunity/license --> 
+
+<UI>
+	<Variable name="Application.CompanyName" value="Hyperganic" />
+	<Variable name="Application.WindowTitle" value="Hyperganic CustomShapers" />
+
+	
+</UI>

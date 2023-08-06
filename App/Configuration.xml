@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is Source Code to be used on Hyperganic Core. --> 
+<!-- The Hyperganic Platform - Source Code License applies to the usage of this code. --> 
+<!-- https://gitlab.hyperganic.com/hyperganic-platformcommunity/license --> 
+
+<Configuration>
+	<AppName>CustomShapers</AppName>
+	<UUID>0cb581fc-ff5d-41d9-a586-fc3007978de1</UUID>
+	<MinCoreVersion>3.206.231</MinCoreVersion>
+</Configuration>

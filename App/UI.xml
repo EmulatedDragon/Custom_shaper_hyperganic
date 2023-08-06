@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is Source Code to be used on Hyperganic Core. -->
+<!-- The Hyperganic Platform - Source Code License applies to the usage of this code. -->
+<!-- https://gitlab.hyperganic.com/hyperganic-platformcommunity/license -->
+
+<!-- Note: DO NOT name random containers! Name only dialogs and individual controls. -->
+<!-- When the app needs to interact with controls, all named parents have to be listed, i.e. 'Dialog.Container1.Container2.Container3.ButtonXYZ' -->
+<!-- However, if the containers are unnamed, the app can simply refer to the control as 'Dialog.ButtonXYZ', no matter how deep in the hierarchy. -->
+<!-- This makes it possible to change the layout, without changing the C++ code. -->
+<UI>
+	<!-- Here we include the Resources that come with all apps by default. -->
+	<!-- You can create new Resources and include them as well. -->
+	<!-- To override any style, just create a new one with the same name. -->
+	<Include file="ColorSets.xml"/>
+	<Include file="ImageSets.xml"/>
+	<Include file="Fonts.xml"/>
+	<Include file="Styles.xml"/>
+	<Include file="Hotkeys.xml"/>
+
+	<!-- Application Menu Bar -->
+	<Include file="Menu.xml"/>
+
+	<!-- Include your Variables -->
+
+	<!-- Main Panel (Unnamed) -->
+	<Panel style="BackgroundPanel,TopLeft,FullSize" onCreate="CSharp.Initialize()">
+
+		<!-- Main 3D Window -->
+		<Include file="UI/ProjectDisplay.xml"/>
+
+		<!-- Coordinate System -->
+		<CoordinateSystem name="CoordinateSystem" font="Regular10" right="0,312:312" width="120" height="120" drawCube="false" cubeSize="0.0" cubeColorOutline="GRAY900@75%" cubeColorFill="B500@25%"/>
+
+		<!-- Splitting Plane Label-->
+		<Include file="SplittingPlaneLabel.xml"/>
+
+		<!-- Local Right Side Panel -->
+		<Panel name="Sidebar" style="ForegroundPanel" height="0" right="0" scrollBarV="ScrollBar" top="0" width="0,312:312">
+			<Grid cellSpacing="0,4" columns="1" stretchRow="-1" padding="0,0,0,0">
+				<!--Uncomment (cmd+/ in mac) , (ctrl + k + c in windows) the line below to activate UI Playground.-->
+				<Grid columns="2" stretchColumn="1" cellSpacing="0,0" height="40" width="100%">
+					<Include file ="UI/UI_Playground.xml"/>
+				</Grid>
+				<Include file="UI/ChooseRecipe.xml"/>
+				<Panel style="Spacer"/>
+				<Include file="UI/General.xml" replace="RecipeName=Sphere Shaper,expandedHeight=420"/>
+				<Include file="UI/General.xml" replace="RecipeName=Cuboid Shaper,expandedHeight=650"/>
+				<Include file="UI/General.xml" replace="RecipeName=Pyramid Shaper,expandedHeight=350"/>
+				<Include file="UI/General.xml" replace="RecipeName=Cone Shaper,expandedHeight=550"/>
+				<Include file="UI/General.xml" replace="RecipeName=Cylinder Hollow Cartesian Shaper,expandedHeight=470"/>
+				<Include file="UI/General.xml" replace="RecipeName=Cylinder Hollow Polar Shaper,expandedHeight=470"/>
+				<Include file="UI/General.xml" replace="RecipeName=Custom Spring Shaper,expandedHeight=550"/>
+				<Include file="UI/General.xml" replace="RecipeName=Epicycloid Shaper,expandedHeight=330"/>
+				<Include file="UI/General.xml" replace="RecipeName=Rotation Explorer Shaper,expandedHeight=650"/>
+				<Include file="UI/General.xml" replace="RecipeName=Bezier Curve Shaper,expandedHeight=500"/>
+				<Include file="UI/General.xml" replace="RecipeName=Smooth Interpolation Shaper,expandedHeight=330"/>
+				<Include file="UI/General.xml" replace="RecipeName=Polygonal Prism Shaper,expandedHeight=650"/>
+				<Include file="UI/General.xml" replace="RecipeName=Super Formula 2D Shaper,expandedHeight=350"/>
+				<Include file="UI/General.xml" replace="RecipeName=Super Formula 3D Shaper,expandedHeight=500"/>
+				<Include file="UI/General.xml" replace="RecipeName=My custom Shaper,expandedHeight=500"/>
+			</Grid>
+			<ScrollBar name="ScrollBar" style="ScrollBarV"/>
+		</Panel>
+
+		<!-- Global Right Side Panel -->
+		<Panel name="GenerateExportPanel" height="72" style="ForegroundPanel,BottomRight" padding="16,16,16,16" width="0,312:312">
+			<!--Include your global buttons (generate, export etc)-->
+			<Grid columns="1" cellSpacing="8,0" height="40" width="100%">
+				<Button enabled="true" name="GenerateButton" onClick="CSharp.Generate()" style="GenerateButton" text="Generate" width="100%"/>
+			</Grid>
+		</Panel>
+	</Panel>
+
+	<!-- Main Panel (Unnamed): End -->
+	<!-- We include modal dialogs last, to put them on top of everything else by default -->
+	<Include file="Modals.xml"/>
+</UI>

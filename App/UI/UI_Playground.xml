@@ -1,0 +1,40 @@
+<Panel name="UI_Playground" style="TopLeft" padding="0,0,0,0" position="Collapsed">
+	<Position height="56" name="Collapsed" width="100%"/>
+	<Position height="500" name="Expanded" width="100%"/>
+
+	<Toggle name="Toggle" on="false" onTurnOff="CSharp.CloseMenu(Sidebar.UI_Playground)" onTurnOn="CSharp.OpenMenu(Sidebar.UI_Playground)" style="BasicDrawer" text="UI_Playground" variable="Project.bChevronToggleUI_Playground"/>
+
+	<Grid background="HBlack6" cellSpacing="0,16" columns="1" padding="16,16,16,16" top="44" width="312">
+		<!-- String Input Field -->
+		<Grid columns="1" height="0" width="100%" padding="0,0,0,0">
+			<TextBox name="" style="GroupedParameterHeader" text="m_strInputField"/>
+			<EditBox emptyText="Input" name="" precision="" style="BasicField" text="" unit="" variable="Project.strInputField" width="100%"/>
+		</Grid>
+
+		<TextBox name="" style="GroupedParameterHeader" text="vecInputField1"/>
+		<!-- Vector Input Field -->
+		<Grid columns="3" cellSpacing="8,0" height="60" width="100%" padding="0,15,0,0">
+			<EditBox emptyText="0.0" label="m_fVecX1" name="" precision="1" style="NumericalField" text="" unit="" variable="Project.fVecX1" width="100%"/>
+			<EditBox emptyText="0.0" label="m_fVecY1" name="" precision="1" style="NumericalField" text="" unit="" variable="Project.fVecY1" width="100%"/>
+			<EditBox emptyText="0.0" label="m_fVecZ1" name="" precision="1" style="NumericalField" text="" unit="" variable="Project.fVecZ1" width="100%"/>
+		</Grid>
+		
+		<TextBox name="" style="GroupedParameterHeader" text="vecInputField2"/>
+		<!-- Vector Input Field -->
+		<Grid columns="3" cellSpacing="8,0" height="60" width="100%" padding="0,15,0,0">
+			<EditBox emptyText="0.0" label="m_fVecX2" name="" precision="1" style="NumericalField" text="" unit="" variable="Project.fVecX2" width="100%"/>
+			<EditBox emptyText="0.0" label="m_fVecY2" name="" precision="1" style="NumericalField" text="" unit="" variable="Project.fVecY2" width="100%"/>
+			<EditBox emptyText="0.0" label="m_fVecZ2" name="" precision="1" style="NumericalField" text="" unit="" variable="Project.fVecZ2" width="100%"/>
+		</Grid>
+
+		<!-- Float Slider 1 -->
+		<Grid columns="1" cellSpacing="8,0" height="60" width="100%">
+			<Slider default="2" height="55" margins="0,5,0,0" max="100" min="0" precision="1" style="AdjustableSlider" text="m_fSlider1" unit="" variable="Project.fSlider1" width="100%" />
+		</Grid>
+
+		<!-- Float Slider 2 -->
+		<Grid columns="1" cellSpacing="8,0" height="60" width="100%">
+			<Slider default="2" height="55" margins="0,5,0,0" max="100" min="0" precision="1" style="AdjustableSlider" text="m_fSlider2" unit="" variable="Project.fSlider2" width="100%" />
+		</Grid>
+	</Grid>
+</Panel>
